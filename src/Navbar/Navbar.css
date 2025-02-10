@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&family=Oswald:wght@500&family=Playfair+Display:wght@600&family=Bebas+Neue&display=swap');
+
+nav {
+  font-family: 'Playfair Display', sans-serif;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  background-color: black;
+
+  color: #fff;
+}
+
+#title {
+  font-size: 1em;
+  width: 25%;
+  display: flex !important;
+  align-items: center;
+}
+
+#title span{
+ margin: 0 0.5em;
+}
+#title i {
+  margin: 0 0.2em;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu-bar {
+  display: none;
+  font-size: 16px;
+}
+
+.menu > div {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu > div > a {
+  padding: 0 25px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.menu > div:hover a {
+  color: #929d9f;
+  cursor: pointer;
+}

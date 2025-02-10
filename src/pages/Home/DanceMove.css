@@ -1,0 +1,55 @@
+.dance-move {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+}
+
+/* .dance-box {
+} */
+
+.dance-move .dance-box .dance-title {
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+
+.dance-title h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.dance-move .dance-box .dance-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 4px;
+  background-color: #fff;
+  margin: 20px auto;
+  font-size: 1dance-move 0.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.dance-move .dance-box .button-group {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dance-move .dance-box .button {
+  padding: 10px;
+  background: #555;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.dance-move .button:hover {
+  background: #666;
+}

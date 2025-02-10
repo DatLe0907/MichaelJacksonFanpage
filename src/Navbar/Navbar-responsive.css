@@ -1,0 +1,45 @@
+/* Break point */
+
+/* Pc */
+@media (min-width: 64em) {
+}
+
+/* Tablet */
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+}
+
+@media (max-width: 46.1875em) {
+    .menu-bar {
+      display: block;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 15px;
+    }
+  
+    /* Ẩn menu mặc định */
+    .menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 200px;
+      background-color: white;
+      color: black;
+      flex-direction: column;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    .menu > div {
+      padding: 10px;
+      text-align: center;
+    }
+  
+    .menu > div a {
+      color: black;
+    }
+  
+    /* Hiển thị menu khi có class "active" */
+    .menu.active {
+      display: flex;
+    }
+  }
