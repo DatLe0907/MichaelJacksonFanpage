@@ -11,11 +11,11 @@ import Game from "./pages/Game/Game.js";
 
 function App() {
   return (
-      <Router>
-        <Navbar />
+      <Router basename='/MichaelJacksonFanpage'>
+        <Navbar/>
         <Routes>
-          <Route path="*" element={<Navigate to="/" />} />
-          <Route path="/" element={<Home />}/>
+          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />}/>
           <Route path="/music" element={<Music />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/game" element={<Game />} />
