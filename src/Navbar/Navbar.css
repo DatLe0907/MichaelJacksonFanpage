@@ -16,18 +16,47 @@ nav {
 }
 
 #title {
-  font-size: 1em;
-  width: 25%;
-  display: flex !important;
+  display: flex;
   align-items: center;
+  justify-content: space-between; /* Giữ khoảng cách hợp lý */
+  width: 100%;
+  max-width: 300px; /* Giới hạn tối đa, tránh tràn */
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  background: rgba(0, 0, 0, 0.8); /* Làm nền nhẹ */
+  color: white;
+  border-radius: 8px;
 }
 
-#title span {
-  margin: 0 0.5em;
+/* Căn chỉnh phần tên */
+#title h1 {
+  gap: 0.2em;
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
 }
+
+/* Điểm số */
+#title .points {
+  font-size: 1rem;
+  font-weight: bold;
+  background: gold;
+  color: black;
+  padding: 0.2em 0.6em;
+  border-radius: 5px;
+  margin-left: 1em;
+  min-width: 60px; /* Giữ kích thước ổn định */
+  text-align: center;
+}
+
+/* Căn chỉnh icon vương miện */
 #title i {
-  margin: 0 0.2em;
+  margin: 0 0.3em;
+  font-size: 1.4em;
+  color: gold;
 }
+
 
 .menu {
   display: flex;

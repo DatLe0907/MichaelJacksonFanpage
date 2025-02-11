@@ -9,6 +9,24 @@
 }
 
 @media (max-width: 46.1875em) {
+  #title {
+    max-width: 90%;
+    font-size: 0.9rem;
+    padding: 0.5em;
+  }
+
+  #title .points {
+    font-size: 0.9rem;
+    padding: 0.2em 0.5em;
+  }
+
+  #title h1 {
+    font-size: 1rem;
+  }
+
+  #title i {
+    font-size: 1.2em;
+  }
     .menu-bar {
       display: block;
       font-size: 24px;

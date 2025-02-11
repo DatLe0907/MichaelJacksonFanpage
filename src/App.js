@@ -7,10 +7,12 @@ import Home from "./pages/Home/Home.js";
 import Music from "./pages/Music/Music.js";
 import Shop from "./pages/Shop/Shop.js";
 import Game from "./pages/Game/Game.js";
+import { GameProvider } from './pages/context/PointsContext.js';
 
 
 function App() {
   return (
+    <GameProvider>
       <Router basename='/MichaelJacksonFanpage'>
         <Navbar/>
         <Routes>
@@ -22,6 +24,7 @@ function App() {
         </Routes>
         <Footer/>
       </Router>
+    </GameProvider>
   );
 }
 
