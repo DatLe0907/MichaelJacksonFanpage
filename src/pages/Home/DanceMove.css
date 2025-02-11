@@ -22,15 +22,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 4px;
   background-color: #fff;
   margin: 20px auto;
-  font-size: 1dance-move 0.5rem;
+  font-size: 0.5rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  font-size: 2rem;
 }
 
 .dance-move .dance-box .button-group {

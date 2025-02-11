@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&family=Oswald:wght@500&family=Playfair+Display:wght@600&family=Bebas+Neue&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&family=Oswald:wght@500&family=Playfair+Display:wght@600&family=Bebas+Neue&display=swap");
 
 nav {
-  font-family: 'Playfair Display', sans-serif;
+  font-family: "Playfair Display", sans-serif;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -22,8 +22,8 @@ nav {
   align-items: center;
 }
 
-#title span{
- margin: 0 0.5em;
+#title span {
+  margin: 0 0.5em;
 }
 #title i {
   margin: 0 0.2em;
@@ -46,6 +46,7 @@ nav {
 }
 
 .menu > div > a {
+  width: 100%;
   padding: 0 25px;
   color: #fff;
   text-decoration: none;

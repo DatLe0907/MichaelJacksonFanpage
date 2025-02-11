@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./DanceMove.css";
+import "./DanceMove-responsive.css";
 
 export default function DanceMove() {
   const [selectedMove, setSelectedMove] = useState(null);

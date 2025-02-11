@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./MusicPlayer.css";
 
 export default function MusicPlayer({ song, isPlaying, onPlay }) {
   const [isLoading, setIsLoading] = useState(false);
+  const iframeRef = useRef(null);
 
   const getYouTubeId = (url) => {
     const match = url.match(/embed\/([a-zA-Z0-9_-]+)/);
@@ -12,12 +13,18 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
   const videoId = getYouTubeId(song.src);
   const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
 
+  useEffect(() => {
+    if (isPlaying) setIsLoading(true);
+  }, [isPlaying]);
+
   return (
     <div className="music-card">
       {isPlaying ? (
         <>
-          {isLoading && <div className="skeleton"></div>} {/* Skeleton hiển thị khi đang load */}
+          {isLoading && <div className="skeleton"></div>} 
           <iframe
+            ref={iframeRef}
+            className="music-video"
             width="100%"
             height="200"
             src={`${song.src}&autoplay=1`}
@@ -25,8 +32,8 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            onLoad={() => setIsLoading(false)} // Khi video load xong, ẩn skeleton
-            onError={() => setIsLoading(false)} // Trường hợp load lỗi cũng tắt skeleton
+            onLoad={() => setIsLoading(false)}
+            onError={() => setIsLoading(false)}
             style={{
               display: isLoading ? "none" : "block",
               borderRadius: "12px",
@@ -37,11 +44,11 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
         <div
           className="thumbnail"
           onClick={() => {
-            setIsLoading(true); // Đặt isLoading = true khi nhấn vào video
+            setIsLoading(true);
             onPlay();
           }}
         >
-          <img src={thumbnailUrl} alt={song.title} />
+          <img src={thumbnailUrl} alt={song.title} className="thumbnail-image" />
           <button className="play-button">▶</button>
         </div>
       )}
