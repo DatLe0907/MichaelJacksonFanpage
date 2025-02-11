@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useGame } from "../../context/PointsContext"; 
 import "./GuessWord.css";
+import "./GuessWord-responsive.css";
 
 const wordList = [
   { word: "Thriller", hint: "Best-selling album of all time" },
@@ -13,7 +14,7 @@ const wordList = [
   { word: "Billie Jean", hint: "Hit song about a girl claiming he’s the father" },
   { word: "Off The Wall", hint: "Album released before 'Thriller'" },
   { word: "This Is It", hint: "Final concert tour that was never completed" },
-  { word: "MJJ", hint: "His initials" },
+  { word: "MJ", hint: "His initials" },
   { word: "Heal The World", hint: "Song promoting global peace" },
   { word: "Black Or White", hint: "Song about racial harmony" },
   { word: "We Are The World", hint: "Charity song co-written with Lionel Richie" },
@@ -23,7 +24,7 @@ const wordList = [
   { word: "MJ One", hint: "Cirque du Soleil show inspired by his music" },
   { word: "Thriller Dance", hint: "Famous dance routine from the 'Thriller' video" },
   { word: "King Of Pop", hint: "His famous nickname" },
-  { word: "Jackson 5", hint: "Group he started in with his brothers" },
+  { word: "Jackson Five", hint: "Group he started in with his brothers" },
   { word: "ABC", hint: "Jackson 5 song about learning the basics" },
   { word: "Ben", hint: "Early solo song about a pet rat" },
   { word: "Invincible", hint: "Last studio album released in 2001" },
@@ -33,7 +34,6 @@ const wordList = [
   { word: "Morphine", hint: "Song discussing painkiller addiction" },
   { word: "Michael", hint: "His first name" },
   { word: "Jackson", hint: "His last name" },
-  { word: "Bad 25", hint: "Anniversary edition of the 'Bad' album" },
   { word: "Sony", hint: "Music label he was associated with" },
   { word: "Joseph", hint: "His father’s first name" },
   { word: "Janet", hint: "His famous sister" },
@@ -50,12 +50,11 @@ const wordList = [
   { word: "Guitar", hint: "Eddie Van Halen played this instrument in 'Beat It'" },
   { word: "Pepsi", hint: "Brand involved in his famous commercial accident" },
   { word: "Grammy", hint: "Award he won multiple times" },
-  { word: "Cirque du Soleil", hint: "Entertainment company with two shows about him" },
   { word: "MJ The Musical", hint: "Broadway show based on his life" }
 ];
 
 export default function GuessWord() {
-  const { points, addPoints } = useGame();
+  const { addPoints } = useGame();
   const [gameStarted, setGameStarted] = useState(false);
   const [currentWord, setCurrentWord] = useState("");
   const [hint, setHint] = useState("");

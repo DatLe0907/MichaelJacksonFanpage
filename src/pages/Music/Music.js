@@ -1,11 +1,11 @@
 import "./Music.css"
 import MusicPlayer from "./MusicPlayer";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 const songs = [
   { title: "Thriller", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/4V90AmXnguw?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Billie Jean", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/Zi_XLOBDo_Y?rel=0&controls=0&modestbranding=1&showinfo=0" },
@@ -71,14 +71,14 @@ const songs = [
   { title: "D.S.", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/SHWpLfZzGU0?si=_p-8u48qWh0GvEt_?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Tabloid Junkie", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/loCFx_eelXE?si=wazK1WXnRdmyBRCY?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "2 Bad", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/U_ccH6-TnAE?si=gNHmJpR6QRJ1ta52?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Little Susie", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Childhood", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Threatened", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "2000 Watts", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Privacy", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Don't Walk Away", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "The Lost Children", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
-  { title: "Heaven Can Wait", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Little Susie", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/BVrNK870EzA?si=3JziDrfhaYBFPS3P?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Childhood", author: "Michael Jackson", album: "HIStory", src: "https://www.youtube.com/embed/puQEcN_iI9o?si=Aa2SXPdhQ2jLwkUK?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Threatened", author: "Michael Jackson", album: "Invincible", src: "ttps://www.youtube.com/embed/g8n5IrTU6mU?si=Qt8tDLRgLj2ioOgR?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "2000 Watts", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/VA5hpF7PH1Q?si=_CjHOQ6_j9fWBapT?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Privacy", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/IAX8rVcbUIQ?si=t4u2A7h_k62Kzp4a?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Don't Walk Away", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/8OVAbsEhKQw?si=Zurd8MVZKM9YrWcV?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "The Lost Children", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/1UoPNNzWUjk?si=Y-4rDlHAPrsSXY5A?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Heaven Can Wait", author: "Michael Jackson", album: "Invincible", src: "https://www.youtube.com/embed/TDVlDUAIz5k?si=SmKTs4gjnfRP6ikP?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Shout", author: "Michael Jackson", album: "Invincible (Japan Bonus Track)", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "We've Got a Good Thing Going", author: "Michael Jackson", album: "Ben", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Ben", author: "Michael Jackson", album: "Ben", src: "https://www.youtube.com/embed/yURRmWtbTbo?rel=0&controls=0&modestbranding=1&showinfo=0" },
@@ -130,12 +130,19 @@ const songsPerPage = 8;
 function Music() {
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  // console.log(songs.length)
-  const totalPages = Math.ceil(songs.length / songsPerPage);
-  const currentSongs = songs.slice(
-    (currentPage - 1) * songsPerPage,
-    currentPage * songsPerPage
-  );
+  const [selectedAlbum, setSelectedAlbum] = useState("All");
+  const [filteredSongs, setFilteredSongs] = useState(songs);
+  
+  const albums = ["All", ...new Set(songs.map(song => song.album))];
+  
+  useEffect(() => {
+    const updatedSongs = selectedAlbum === "All" ? songs : songs.filter(song => song.album === selectedAlbum);
+    setFilteredSongs(updatedSongs);
+    setCurrentPage(1); 
+  }, [selectedAlbum]);
+  
+  const totalPages = Math.ceil(filteredSongs.length / songsPerPage);
+  const currentSongs = filteredSongs.slice((currentPage - 1) * songsPerPage, currentPage * songsPerPage);
 
   const handlePlay = (index) => {
     setCurrentPlaying(currentPlaying === index ? null : index);
@@ -144,11 +151,11 @@ function Music() {
   const navigate = useNavigate();
   const location = useLocation();
 
-useEffect(() => {
-  const params = new URLSearchParams(location.search);
-  const savedPage = parseInt(params.get("page")) || 1;
-  setCurrentPage(savedPage);
-}, [location]);
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const savedPage = parseInt(params.get("page")) || 1;
+    setCurrentPage(savedPage);
+  }, [location]);
 
   const handlePageClick = ({ selected }) => {
     const newPage = selected + 1;
@@ -159,41 +166,44 @@ useEffect(() => {
   return (
     <div>
       <div className="Music">
-       <h1 className="Music-heading">Michael Jackson’s Top Songs</h1>
-       <div className="Music-box">
-         {currentSongs.map((song, index) => {
-          const actualIndex = (currentPage - 1) * songsPerPage + index;
-          return (
-            <div className="Music-video" key={actualIndex}>
-              <MusicPlayer
-                song={song}
-                isPlaying={currentPlaying === actualIndex}
-                onPlay={() => handlePlay(actualIndex)}
-              />
-            </div>
-          );
-        })}
+        <h1 className="Music-heading">Michael Jackson’s Top Songs</h1>
+        <select className="Music-filter" value={selectedAlbum} onChange={(e) => setSelectedAlbum(e.target.value)}>
+          {albums.map(album => (
+            <option key={album} value={album}>{album}</option>
+          ))}
+        </select>
+        <div className="Music-box">
+          {currentSongs.length > 0 ? currentSongs.map((song, index) => {
+            const actualIndex = (currentPage - 1) * songsPerPage + index;
+            return (
+              <div className="Music-video" key={actualIndex}>
+                <MusicPlayer
+                  song={song}
+                  isPlaying={currentPlaying === actualIndex}
+                  onPlay={() => handlePlay(actualIndex)}
+                />
+              </div>
+            );
+          }) : <p className="Music-no-results">No songs found for this album.</p>}
+        </div>
       </div>
-
-      
-    </div>
-    <ReactPaginate
-  previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
-  nextLabel={<FontAwesomeIcon icon={faArrowRight} />}
-  breakLabel={"..."}
-  pageCount={totalPages}
-  marginPagesDisplayed={2}
-  pageRangeDisplayed={3}
-  onPageChange={handlePageClick}
-  forcePage={currentPage - 1}
-  containerClassName={"Music-pagination"}
-  activeClassName={"active"}
-  previousClassName={"prev"}
-  nextClassName={"next"}
-  disabledClassName={"disabled"}
-  pageClassName={"page-item"}
-  pageLinkClassName={"page-link"}
-/>
+      <ReactPaginate
+        previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
+        nextLabel={<FontAwesomeIcon icon={faArrowRight} />}
+        breakLabel={"..."}
+        pageCount={totalPages}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageClick}
+        forcePage={currentPage - 1}
+        containerClassName={"Music-pagination"}
+        activeClassName={"active"}
+        previousClassName={"prev"}
+        nextClassName={"next"}
+        disabledClassName={"disabled"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+      />
     </div>
   );
 };

@@ -26,7 +26,7 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
             ref={iframeRef}
             className="music-video"
             width="100%"
-            height="200"
+            height="auto"
             src={`${song.src}&autoplay=1`}
             title={song.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

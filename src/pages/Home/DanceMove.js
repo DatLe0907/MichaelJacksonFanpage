@@ -34,7 +34,11 @@ export default function DanceMove() {
         </div>
         <div className="button-group">
           {danceMoves.map((move) => (
-            <button key={move.id} className="button" onClick={() => setSelectedMove(move)}>
+            <button
+              key={move.id}
+              className={`button ${selectedMove?.id === move.id ? "active" : ""}`}
+              onClick={() => setSelectedMove(move)}
+            >
               {move.name}
             </button>
           ))}

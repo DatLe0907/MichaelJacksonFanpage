@@ -49,8 +49,14 @@
   border-radius: 5px;
   cursor: pointer;
   color: white;
+  transition: background 0.3s ease-in-out;
 }
 
 .dance-move .button:hover {
   background: #666;
+}
+
+.dance-move .button.active {
+  background-color: #ffd700;
+  color: #000;
 }

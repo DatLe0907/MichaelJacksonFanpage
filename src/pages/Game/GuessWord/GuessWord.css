@@ -25,7 +25,7 @@
   background-color: var(--primary-color);
   border: none;
   color: #000;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   border-radius: 8px;
@@ -45,6 +45,7 @@
 }
 
 .word-display {
+  width: 40%;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -53,7 +54,7 @@
 
 .word-display .letter {
   list-style-type: none;
-  width: 40px;
+  width: 10%;
   font-size: 2.5rem;
   font-weight: bold;
   text-transform: uppercase;
