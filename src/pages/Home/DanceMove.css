@@ -23,15 +23,16 @@
   justify-content: center;
   align-items: center;
   width: 600px;
-  height: 600px;
+  height: 400px;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: #000;
   margin: 20px auto;
   font-size: 0.5rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   font-size: 2rem;
+  transition: background 0.2s ease-in;
 }
 
 .dance-move .dance-box .button-group {

@@ -6,6 +6,18 @@
 
 /* Tablet */
 @media (min-width: 46.25em) and (max-width: 63.9375em) {
+  #title .points {
+    font-size: 0.9rem;
+    padding: 0.2em 0.5em;
+  }
+
+  #title h1 {
+    font-size: 1rem;
+  }
+
+  #title i {
+    font-size: 1.2em;
+  }
 }
 
 @media (max-width: 46.1875em) {

@@ -4,6 +4,8 @@ import "./MusicPlayer.css";
 export default function MusicPlayer({ song, isPlaying, onPlay }) {
   const [isLoading, setIsLoading] = useState(false);
   const iframeRef = useRef(null);
+  const thumbnailRef = useRef(null);
+  const [iframeHeight, setIframeHeight] = useState("auto");
 
   const getYouTubeId = (url) => {
     const match = url.match(/embed\/([a-zA-Z0-9_-]+)/);
@@ -14,19 +16,21 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
   const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg` : "";
 
   useEffect(() => {
-    if (isPlaying) setIsLoading(true);
+    if (isPlaying && thumbnailRef.current) {
+      setIframeHeight(thumbnailRef.current.clientHeight + "px");
+    }
   }, [isPlaying]);
 
   return (
     <div className="music-card">
       {isPlaying ? (
         <>
-          {isLoading && <div className="skeleton"></div>} 
+          {isLoading && <div className="skeleton" style={{ height: iframeHeight }}></div>}
           <iframe
             ref={iframeRef}
             className="music-video"
             width="100%"
-            height="auto"
+            height={iframeHeight}
             src={`${song.src}&autoplay=1`}
             title={song.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -47,6 +51,7 @@ export default function MusicPlayer({ song, isPlaying, onPlay }) {
             setIsLoading(true);
             onPlay();
           }}
+          ref={thumbnailRef}
         >
           <img src={thumbnailUrl} alt={song.title} className="thumbnail-image" />
           <button className="play-button">▶</button>

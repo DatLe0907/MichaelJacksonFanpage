@@ -1,34 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap");
 
 .music-card {
-  width: 100%;
-  height: 100%;
+  
+  width: calc(100%/4 - 20px);
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  max-width: 500px; /* Giới hạn max để tránh quá rộng trên tablet */
   background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
   border-radius: 12px;
   padding: 15px;
   text-align: center;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-  /* transition: transform 0.3s ease; */
 }
 
-.music-card .music-video{
-  height: 75%;
-  object-fit: cover;
-  width: 100%;
+.music-card:hover{
+  transform: scale(1.05);
 }
-/* .music-card:hover {
-  transform: translateY(-5px);
-} */
+
+.music-card .music-video {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Đảm bảo luôn theo tỷ lệ 16:9 */
+  border-radius: 12px;
+}
 
 .thumbnail {
   position: relative;
   cursor: pointer;
   border-radius: 12px;
   overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .thumbnail img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 12px;
   transition: transform 0.3s ease-in-out;
 }
@@ -42,7 +51,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 215, 0, 0.9); /* Vàng gold */
+  background: rgba(255, 215, 0, 0.9);
   color: black;
   border: none;
   width: 60px;
@@ -63,10 +72,10 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* Hiệu ứng Skeleton */
+/* Skeleton hiệu ứng load */
 .skeleton {
   width: 100%;
-  height: 75%;
+  aspect-ratio: 16 / 9;
   background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
@@ -98,24 +107,25 @@
 .song-info .song-album {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-  color: #ffd700; /* Vàng gold */
+  color: #ffd700;
   opacity: 0.8;
 }
 
 /* Tablet */
 @media (max-width: 1023px) {
-  .music-card .music-video{
-    height: 620px;
-    object-fit: cover;
-    width: 100%;
+  .music-card {
+    width: calc(100%/2 - 50px);
+    max-width: 450px;
+    padding: 12px;
   }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
-  .music-card .music-video{
-    height: 620px;
-    object-fit: cover;
-    width: 100%;
+  .music-card {
+    margin: 15px 0;
+    width: 95%;
+    max-width: 380px;
+    padding: 10px;
   }
 }

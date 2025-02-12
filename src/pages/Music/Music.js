@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const songs = [
-  { title: "Thriller", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/4V90AmXnguw?rel=0&controls=0&modestbranding=1&showinfo=0" },
+  { title: "Thriller", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/0JFbiCg-8n4?si=ICb4dAVdczaiP9dE?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Billie Jean", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/Zi_XLOBDo_Y?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Beat It", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/oRdxUFDoQe0?rel=0&controls=0&modestbranding=1&showinfo=0" },
   { title: "Smooth Criminal", author: "Michael Jackson", album: "Bad", src: "https://www.youtube.com/embed/sFvENQBc-F8?rel=0&controls=0&modestbranding=1&showinfo=0" },
@@ -176,13 +176,11 @@ function Music() {
           {currentSongs.length > 0 ? currentSongs.map((song, index) => {
             const actualIndex = (currentPage - 1) * songsPerPage + index;
             return (
-              <div className="Music-video" key={actualIndex}>
                 <MusicPlayer
                   song={song}
                   isPlaying={currentPlaying === actualIndex}
                   onPlay={() => handlePlay(actualIndex)}
                 />
-              </div>
             );
           }) : <p className="Music-no-results">No songs found for this album.</p>}
         </div>
