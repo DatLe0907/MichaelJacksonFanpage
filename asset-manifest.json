@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MichaelJacksonFanpage/static/css/main.815e9a23.css",
-    "main.js": "/MichaelJacksonFanpage/static/js/main.55402691.js",
+    "main.css": "/MichaelJacksonFanpage/static/css/main.886511e2.css",
+    "main.js": "/MichaelJacksonFanpage/static/js/main.0c62eaff.js",
     "static/js/488.1101ae29.chunk.js": "/MichaelJacksonFanpage/static/js/488.1101ae29.chunk.js",
     "static/media/kick.gif": "/MichaelJacksonFanpage/static/media/kick.3e15338ed9d88a99701f.gif",
     "static/media/antigravity-lean.gif": "/MichaelJacksonFanpage/static/media/antigravity-lean.6077ddfc95c362f7517c.gif",
@@ -17,12 +17,12 @@
     "static/media/crotch-cb.gif": "/MichaelJacksonFanpage/static/media/crotch-cb.78edabe526659599f5a4.gif",
     "static/media/mj-global-heat-map.png": "/MichaelJacksonFanpage/static/media/mj-global-heat-map.b93a69ff4ec71a807bc8.png",
     "index.html": "/MichaelJacksonFanpage/index.html",
-    "main.815e9a23.css.map": "/MichaelJacksonFanpage/static/css/main.815e9a23.css.map",
-    "main.55402691.js.map": "/MichaelJacksonFanpage/static/js/main.55402691.js.map",
+    "main.886511e2.css.map": "/MichaelJacksonFanpage/static/css/main.886511e2.css.map",
+    "main.0c62eaff.js.map": "/MichaelJacksonFanpage/static/js/main.0c62eaff.js.map",
     "488.1101ae29.chunk.js.map": "/MichaelJacksonFanpage/static/js/488.1101ae29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.815e9a23.css",
-    "static/js/main.55402691.js"
+    "static/css/main.886511e2.css",
+    "static/js/main.0c62eaff.js"
   ]
 }
