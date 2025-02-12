@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useGame } from "../../context/PointsContext"; 
 import "./GuessWord.css";
 import "./GuessWord-responsive.css";
+import confetti from "canvas-confetti";
 
 const wordList = [
   { word: "Thriller", hint: "Best-selling album of all time" },
@@ -119,11 +120,18 @@ export default function GuessWord({ onStartGame, onExitGame }) {
         .split("")
         .filter((char) => char !== " ")
         .every((char) => newGuessedLetters.includes(char));
-
+        const celebrateWin = () => {
+          confetti({
+            particleCount: 150,
+            spread: 70,
+            origin: { y: 1 }, 
+          });
+        };
       if (allLettersGuessed) {
         setShowWin(true);
         addPoints(1);
         setGameStarted(false);
+        celebrateWin();
       }
     } else {
       setWrongGuesses(wrongGuesses + 1);

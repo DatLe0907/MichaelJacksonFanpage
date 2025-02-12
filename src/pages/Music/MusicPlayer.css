@@ -123,7 +123,7 @@
 /* Mobile */
 @media (max-width: 767px) {
   .music-card {
-    margin: 15px 0;
+    margin: 5px 0;
     width: 95%;
     max-width: 380px;
     padding: 10px;
