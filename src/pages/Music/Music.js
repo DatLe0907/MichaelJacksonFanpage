@@ -1,10 +1,10 @@
-import "./Music.css"
-import MusicPlayer from "./MusicPlayer";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import MusicPlayer from "./MusicPlayer";
+import "./Music.css"
 
 const songs = [
   { title: "Thriller", author: "Michael Jackson", album: "Thriller", src: "https://www.youtube.com/embed/0JFbiCg-8n4?si=ICb4dAVdczaiP9dE?rel=0&controls=0&modestbranding=1&showinfo=0" },
@@ -131,16 +131,36 @@ function Music() {
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedAlbum, setSelectedAlbum] = useState("All");
-  const [filteredSongs, setFilteredSongs] = useState(songs);
+  const [filteredSongs, setFilteredSongs] = useState([]);
   
   const albums = ["All", ...new Set(songs.map(song => song.album))];
-  
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Lấy dữ liệu từ URL khi component mount
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const savedAlbum = params.get("album") || "All";
+    const savedPage = parseInt(params.get("page")) || 1;
+
+    setSelectedAlbum(savedAlbum);
+    setCurrentPage(savedPage);
+  }, [location]);
+
+  // Cập nhật danh sách bài hát khi album thay đổi
   useEffect(() => {
     const updatedSongs = selectedAlbum === "All" ? songs : songs.filter(song => song.album === selectedAlbum);
     setFilteredSongs(updatedSongs);
-    setCurrentPage(1); 
-  }, [selectedAlbum]);
-  
+    setCurrentPage(1); // Reset về trang đầu tiên khi đổi album
+
+    // Cập nhật URL khi album thay đổi
+    const params = new URLSearchParams(location.search);
+    params.set("album", selectedAlbum);
+    params.set("page", 1);
+    navigate(`?${params.toString()}`, { replace: true });
+  }, [selectedAlbum, navigate]);
+
   const totalPages = Math.ceil(filteredSongs.length / songsPerPage);
   const currentSongs = filteredSongs.slice((currentPage - 1) * songsPerPage, currentPage * songsPerPage);
 
@@ -148,23 +168,17 @@ function Music() {
     setCurrentPlaying(currentPlaying === index ? null : index);
   };
 
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const savedPage = parseInt(params.get("page")) || 1;
-    setCurrentPage(savedPage);
-  }, [location]);
-
   const handlePageClick = ({ selected }) => {
     const newPage = selected + 1;
     setCurrentPage(newPage);
-    navigate(`?page=${newPage}`);
+
+    const params = new URLSearchParams(location.search);
+    params.set("page", newPage);
+    params.set("album", selectedAlbum);
+    navigate(`?${params.toString()}`);
   };
 
   return (
-    <div>
       <div className="Music">
         <h1 className="Music-heading">Michael Jackson’s Top Songs</h1>
         <select className="Music-filter" value={selectedAlbum} onChange={(e) => setSelectedAlbum(e.target.value)}>
@@ -184,7 +198,6 @@ function Music() {
             );
           }) : <p className="Music-no-results">No songs found for this album.</p>}
         </div>
-      </div>
       <ReactPaginate
         previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
         nextLabel={<FontAwesomeIcon icon={faArrowRight} />}
@@ -204,6 +217,6 @@ function Music() {
       />
     </div>
   );
-};
+}
 
 export default Music;

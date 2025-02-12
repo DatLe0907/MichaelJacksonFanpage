@@ -1,6 +1,6 @@
 import './App.css';
 import './assets/icon/Fontawesome.js'
-import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import Footer from "./Footer/Footer.js";
 import Navbar from "./Navbar/Navbar.js";
 import Home from "./pages/Home/Home.js";
@@ -13,7 +13,7 @@ import { GameProvider } from './pages/context/PointsContext.js';
 function App() {
   return (
     <GameProvider>
-      <Router basename='/MichaelJacksonFanpage'>
+      <BrowserRouter basename='/MichaelJacksonFanpage'>
         <Navbar/>
         <Routes>
           <Route path="*" element={<Navigate to="/home" />} />
@@ -23,7 +23,7 @@ function App() {
           <Route path="/game" element={<Game />} />
         </Routes>
         <Footer/>
-      </Router>
+      </BrowserRouter>
     </GameProvider>
   );
 }
