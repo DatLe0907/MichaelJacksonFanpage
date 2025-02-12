@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./DanceMove.css";
 import "./DanceMove-responsive.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
 export default function DanceMove() {
   const [selectedMove, setSelectedMove] = useState(null);
@@ -30,7 +32,7 @@ export default function DanceMove() {
             backgroundImage: selectedMove ? `url("${selectedMove.src}")` : "none",
           }}
         >
-          {!selectedMove && "🎵"}
+          {!selectedMove && <FontAwesomeIcon icon={faMusic} />}
         </div>
         <div className="button-group">
           {danceMoves.map((move) => (

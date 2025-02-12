@@ -53,7 +53,7 @@ const wordList = [
   { word: "MJ The Musical", hint: "Broadway show based on his life" }
 ];
 
-export default function GuessWord() {
+export default function GuessWord({ onStartGame, onExitGame }) {
   const { addPoints } = useGame();
   const [gameStarted, setGameStarted] = useState(false);
   const [currentWord, setCurrentWord] = useState("");
@@ -63,7 +63,7 @@ export default function GuessWord() {
   const [showGameOver, setShowGameOver] = useState(false);
   const [showWin, setShowWin] = useState(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
-  const maxWrongGuesses = 6;
+  const [maxWrongGuesses, setMaxWrongGuesses] = useState(6);
 
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -84,17 +84,20 @@ export default function GuessWord() {
 
   const startGame = () => {
     setGameStarted(true);
+    onStartGame();
     const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     setCurrentWord(randomWord.word);
     setHint(randomWord.hint);
     setGuessedLetters([]);
     setWrongGuesses(0);
+    setMaxWrongGuesses((randomWord.word.length >= 6) ? (randomWord.word.length) : 6);
     setShowGameOver(false);
     setShowWin(false);
   };
 
   const exitGame = () => {
     setGameStarted(false);
+    onExitGame(); 
     setShowGameOver(false);
     setShowWin(false);
     setShowExitConfirm(false);
@@ -132,9 +135,9 @@ export default function GuessWord() {
   };
 
   return (
-    <div id="main" className="mj-theme">
+    <div className="guess-word">
       {!gameStarted ? (
-        <button className="start-game mj-button" onClick={startGame}>Guess the word</button>
+        <button className="start-game mj-button" onClick={startGame}>Play</button>
       ) : (
         <div className="game__box mj-container">
           <h4 className="game-hint">Hint: <b>{hint}</b></h4>

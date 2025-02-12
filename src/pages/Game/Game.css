@@ -1,4 +1,36 @@
 .Game {
   margin-top: 60px;
-  height: 80vh;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.game-description {
+  text-align: center;
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.game-description h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.game-description p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.game-description strong {
+  color: var(--primary-color);
+}
+
