@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <p className="footer-text">&copy; {new Date().getFullYear()} Michael Jackson Fan Page</p>
+        <p className="footer-text">&copy; {new Date().getFullYear()} Moonwalker Tunes</p>
         <div className="footer-icons">
           <a
             href="https://www.facebook.com/michaeljackson"
