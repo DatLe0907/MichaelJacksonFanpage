@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useGame } from "../../context/PointsContext"; 
 import "./GuessWord.css";
 import "./GuessWord-responsive.css";
@@ -66,23 +66,6 @@ export default function GuessWord({ onStartGame, onExitGame }) {
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const [maxWrongGuesses, setMaxWrongGuesses] = useState(6);
 
-  useEffect(() => {
-    const handleKeyPress = (e) => {
-      const letter = e.key.toLowerCase();
-      if (/^[a-z]$/.test(letter)) {
-        handleGuess(letter);
-      }
-    };
-
-    if (gameStarted) {
-      document.addEventListener("keydown", handleKeyPress);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [gameStarted, guessedLetters, wrongGuesses]);
-
   const startGame = () => {
     setGameStarted(true);
     onStartGame();
@@ -108,39 +91,55 @@ export default function GuessWord({ onStartGame, onExitGame }) {
     setWrongGuesses(0);
   };
 
-  const handleGuess = (letter) => {
+  const handleGuess = useCallback((letter) => {
     if (!gameStarted || guessedLetters.includes(letter.toLowerCase())) return;
-
+  
     const newGuessedLetters = [...guessedLetters, letter.toLowerCase()];
     setGuessedLetters(newGuessedLetters);
-
+  
     if (currentWord.toLowerCase().includes(letter.toLowerCase())) {
       const allLettersGuessed = currentWord
         .toLowerCase()
         .split("")
         .filter((char) => char !== " ")
         .every((char) => newGuessedLetters.includes(char));
-        const celebrateWin = () => {
-          confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 1 }, 
-          });
-        };
+  
       if (allLettersGuessed) {
         setShowWin(true);
         addPoints(1);
         setGameStarted(false);
-        celebrateWin();
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 1 },
+        });
       }
     } else {
-      setWrongGuesses(wrongGuesses + 1);
+      setWrongGuesses((prev) => prev + 1);
       if (wrongGuesses + 1 >= maxWrongGuesses) {
         setShowGameOver(true);
         setGameStarted(false);
       }
     }
-  };
+  }, [gameStarted, guessedLetters, currentWord, addPoints, wrongGuesses, maxWrongGuesses]);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      const letter = e.key.toLowerCase();
+      if (/^[a-z]$/.test(letter)) {
+        handleGuess(letter);
+      }
+    };
+  
+    if (gameStarted) {
+      document.addEventListener("keydown", handleKeyPress);
+    }
+  
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [gameStarted, handleGuess]);
+  
 
   return (
     <div className="guess-word">

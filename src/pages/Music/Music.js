@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -131,93 +131,100 @@ function Music() {
   const [currentPlaying, setCurrentPlaying] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedAlbum, setSelectedAlbum] = useState("All");
-  const [filteredSongs, setFilteredSongs] = useState([]);
-  
-  const albums = ["All", ...new Set(songs.map(song => song.album))];
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Lấy dữ liệu từ URL khi component mount
+  // Lấy danh sách album từ songs
+  const albums = useMemo(() => ["All", ...new Set(songs.map(song => song.album))], [songs]);
+
+  // Lấy dữ liệu từ URL
+  const params = useMemo(() => new URLSearchParams(location.search), [location.search]);
+
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
     const savedAlbum = params.get("album") || "All";
-    const savedPage = parseInt(params.get("page")) || 1;
+    const savedPage = parseInt(params.get("page"), 10) || 1;
 
     setSelectedAlbum(savedAlbum);
     setCurrentPage(savedPage);
-  }, [location]);
+  }, [params]);
 
-  // Cập nhật danh sách bài hát khi album thay đổi
+  // Lọc danh sách bài hát theo album
+  const filteredSongs = useMemo(() => {
+    return selectedAlbum === "All" ? songs : songs.filter(song => song.album === selectedAlbum);
+  }, [selectedAlbum, songs]);
+
+  // Lấy danh sách bài hát trên trang hiện tại
+  const currentSongs = useMemo(() => {
+    const start = (currentPage - 1) * songsPerPage;
+    return filteredSongs.slice(start, start + songsPerPage);
+  }, [filteredSongs, currentPage]);
+
   useEffect(() => {
-    const updatedSongs = selectedAlbum === "All" ? songs : songs.filter(song => song.album === selectedAlbum);
-    setFilteredSongs(updatedSongs);
-    setCurrentPlaying(null);
-    setCurrentPage(1); // Reset về trang đầu tiên khi đổi album
-
-    // Cập nhật URL khi album thay đổi
-    const params = new URLSearchParams(location.search);
-    params.set("album", selectedAlbum);
-    params.set("page", 1);
-    navigate(`?${params.toString()}`, { replace: true });
-  }, [selectedAlbum, navigate]);
+    const newParams = new URLSearchParams();
+    newParams.set("album", selectedAlbum);
+    newParams.set("page", currentPage);
+    navigate(`?${newParams.toString()}`, { replace: true });
+  }, [selectedAlbum, currentPage, navigate]);
 
   const totalPages = Math.ceil(filteredSongs.length / songsPerPage);
-  const currentSongs = filteredSongs.slice((currentPage - 1) * songsPerPage, currentPage * songsPerPage);
 
   const handlePlay = (index) => {
     setCurrentPlaying(currentPlaying === index ? null : index);
   };
 
   const handlePageClick = ({ selected }) => {
-    const newPage = selected + 1;
-    setCurrentPage(newPage);
-
-    const params = new URLSearchParams(location.search);
-    params.set("page", newPage);
-    params.set("album", selectedAlbum);
-    navigate(`?${params.toString()}`);
+    setCurrentPage(selected + 1);
   };
 
   return (
-      <div className="Music">
-        <h1 className="Music-heading">Michael Jackson’s Top Songs</h1>
-        <select className="Music-filter" value={selectedAlbum} onChange={(e) => setSelectedAlbum(e.target.value)}>
-          {albums.map(album => (
-            <option key={album} value={album}>{album}</option>
-          ))}
-        </select>
-        <div className="Music-box">
-          {currentSongs.length > 0 ? currentSongs.map((song, index) => {
-            const actualIndex = (currentPage - 1) * songsPerPage + index;
-            return (
-                <MusicPlayer
-                  song={song}
-                  isPlaying={currentPlaying === actualIndex}
-                  onPlay={() => handlePlay(actualIndex)}
-                />
-            );
-          }) : <p className="Music-no-results">No songs found for this album.</p>}
-        </div>
-      <ReactPaginate
-        previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
-        nextLabel={<FontAwesomeIcon icon={faArrowRight} />}
-        breakLabel={"..."}
-        pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        onPageChange={handlePageClick}
-        forcePage={currentPage - 1}
-        containerClassName={"Music-pagination"}
-        activeClassName={"active"}
-        previousClassName={"prev"}
-        nextClassName={"next"}
-        disabledClassName={"disabled"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-      />
+    <div className="Music">
+      <h1 className="Music-heading">Michael Jackson’s Top Songs</h1>
+
+      <select className="Music-filter" value={selectedAlbum} onChange={(e) => setSelectedAlbum(e.target.value)}>
+        {albums.map(album => (
+          <option key={album} value={album}>{album}</option>
+        ))}
+      </select>
+
+      <div className="Music-box">
+        {currentSongs.length > 0 ? (
+          currentSongs.map((song, index) => (
+            <MusicPlayer
+              key={song.id}
+              song={song}
+              isPlaying={currentPlaying === index}
+              onPlay={() => handlePlay(index)}
+            />
+          ))
+        ) : (
+          <p className="Music-no-results">No songs found for this album.</p>
+        )}
+      </div>
+
+      {totalPages > 1 && (
+        <ReactPaginate
+          previousLabel={<FontAwesomeIcon icon={faArrowLeft} />}
+          nextLabel={<FontAwesomeIcon icon={faArrowRight} />}
+          breakLabel={"..."}
+          pageCount={totalPages}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          forcePage={currentPage - 1}
+          containerClassName={"Music-pagination"}
+          activeClassName={"active"}
+          previousClassName={"prev"}
+          nextClassName={"next"}
+          disabledClassName={"disabled"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+        />
+      )}
     </div>
   );
 }
+
+
 
 export default Music;

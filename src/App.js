@@ -13,7 +13,7 @@ import { GameProvider } from './pages/context/PointsContext.js';
 function App() {
   return (
     <GameProvider>
-      <BrowserRouter basename='/MichaelJacksonFanpage'>
+      <BrowserRouter basename='/Moonwalker-Tunes'>
         <Navbar/>
         <Routes>
           <Route path="*" element={<Navigate to="/home" />} />
