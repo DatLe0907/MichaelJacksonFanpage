@@ -152,6 +152,7 @@ function Music() {
   useEffect(() => {
     const updatedSongs = selectedAlbum === "All" ? songs : songs.filter(song => song.album === selectedAlbum);
     setFilteredSongs(updatedSongs);
+    setCurrentPlaying(null);
     setCurrentPage(1); // Reset về trang đầu tiên khi đổi album
 
     // Cập nhật URL khi album thay đổi
