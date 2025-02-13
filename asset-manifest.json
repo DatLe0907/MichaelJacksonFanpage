@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/MichaelJacksonFanpage/static/css/main.70dd94a0.css",
-    "main.js": "/MichaelJacksonFanpage/static/js/main.a00c564b.js",
-    "static/js/488.1101ae29.chunk.js": "/MichaelJacksonFanpage/static/js/488.1101ae29.chunk.js",
-    "static/media/kick.gif": "/MichaelJacksonFanpage/static/media/kick.3e15338ed9d88a99701f.gif",
-    "static/media/antigravity-lean.gif": "/MichaelJacksonFanpage/static/media/antigravity-lean.6077ddfc95c362f7517c.gif",
-    "static/media/moonwalk.gif": "/MichaelJacksonFanpage/static/media/moonwalk.46564179b150c3691276.gif",
-    "static/media/side-walk.gif": "/MichaelJacksonFanpage/static/media/side-walk.c33081a8872b35866afd.gif",
-    "static/media/spin.gif": "/MichaelJacksonFanpage/static/media/spin.342959a3c104617afdce.gif",
-    "static/media/circle-slide.gif": "/MichaelJacksonFanpage/static/media/circle-slide.5bb255b10899522e919c.gif",
-    "static/media/shuffle.gif": "/MichaelJacksonFanpage/static/media/shuffle.c0dd4ec8ea326aefb231.gif",
-    "static/media/toe-stand.gif": "/MichaelJacksonFanpage/static/media/toe-stand.adc010616e85286cd08b.gif",
-    "static/media/slider-3.jpg": "/MichaelJacksonFanpage/static/media/slider-3.6113ce42c68140acba2c.jpg",
-    "static/media/slider-2.jpg": "/MichaelJacksonFanpage/static/media/slider-2.cf3f2bf1aad6e2f30b31.jpg",
-    "static/media/slider-1.jpg": "/MichaelJacksonFanpage/static/media/slider-1.ec40892c4be1c5575358.jpg",
-    "static/media/crotch-cb.gif": "/MichaelJacksonFanpage/static/media/crotch-cb.78edabe526659599f5a4.gif",
-    "static/media/mj-global-heat-map.png": "/MichaelJacksonFanpage/static/media/mj-global-heat-map.b93a69ff4ec71a807bc8.png",
-    "index.html": "/MichaelJacksonFanpage/index.html",
-    "main.70dd94a0.css.map": "/MichaelJacksonFanpage/static/css/main.70dd94a0.css.map",
-    "main.a00c564b.js.map": "/MichaelJacksonFanpage/static/js/main.a00c564b.js.map",
-    "488.1101ae29.chunk.js.map": "/MichaelJacksonFanpage/static/js/488.1101ae29.chunk.js.map"
+    "main.css": "/Moonwalker-Tunes/static/css/main.70dd94a0.css",
+    "main.js": "/Moonwalker-Tunes/static/js/main.b0f8167d.js",
+    "static/js/488.1101ae29.chunk.js": "/Moonwalker-Tunes/static/js/488.1101ae29.chunk.js",
+    "static/media/kick.gif": "/Moonwalker-Tunes/static/media/kick.3e15338ed9d88a99701f.gif",
+    "static/media/antigravity-lean.gif": "/Moonwalker-Tunes/static/media/antigravity-lean.6077ddfc95c362f7517c.gif",
+    "static/media/moonwalk.gif": "/Moonwalker-Tunes/static/media/moonwalk.46564179b150c3691276.gif",
+    "static/media/side-walk.gif": "/Moonwalker-Tunes/static/media/side-walk.c33081a8872b35866afd.gif",
+    "static/media/spin.gif": "/Moonwalker-Tunes/static/media/spin.342959a3c104617afdce.gif",
+    "static/media/circle-slide.gif": "/Moonwalker-Tunes/static/media/circle-slide.5bb255b10899522e919c.gif",
+    "static/media/shuffle.gif": "/Moonwalker-Tunes/static/media/shuffle.c0dd4ec8ea326aefb231.gif",
+    "static/media/toe-stand.gif": "/Moonwalker-Tunes/static/media/toe-stand.adc010616e85286cd08b.gif",
+    "static/media/slider-3.jpg": "/Moonwalker-Tunes/static/media/slider-3.6113ce42c68140acba2c.jpg",
+    "static/media/slider-2.jpg": "/Moonwalker-Tunes/static/media/slider-2.cf3f2bf1aad6e2f30b31.jpg",
+    "static/media/slider-1.jpg": "/Moonwalker-Tunes/static/media/slider-1.ec40892c4be1c5575358.jpg",
+    "static/media/crotch-cb.gif": "/Moonwalker-Tunes/static/media/crotch-cb.78edabe526659599f5a4.gif",
+    "static/media/mj-global-heat-map.png": "/Moonwalker-Tunes/static/media/mj-global-heat-map.b93a69ff4ec71a807bc8.png",
+    "index.html": "/Moonwalker-Tunes/index.html",
+    "main.70dd94a0.css.map": "/Moonwalker-Tunes/static/css/main.70dd94a0.css.map",
+    "main.b0f8167d.js.map": "/Moonwalker-Tunes/static/js/main.b0f8167d.js.map",
+    "488.1101ae29.chunk.js.map": "/Moonwalker-Tunes/static/js/488.1101ae29.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.70dd94a0.css",
-    "static/js/main.a00c564b.js"
+    "static/js/main.b0f8167d.js"
   ]
 }
